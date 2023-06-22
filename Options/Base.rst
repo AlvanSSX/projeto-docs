@@ -4,8 +4,8 @@
 4.1. Bancos de dados internos
 ==============================
 
-* Transacionais: JDE (JD Edwards) e ORASN (Oracle + a sigla para Sistema de Negócio). 
-* BI: em produção, os bancos ORABI, ORABI1, ORABIF. Em desenvolvimento, ORABID, ORABI1D, ORABIFD. Em homologação, ORABIH, ORABI1H, ORABIFH. 
+* **Transacionais**: JDE (JD Edwards) e ORASN (Oracle + a sigla para Sistema de Negócio). 
+* **BI**: em produção, os bancos ORABI, ORABI1, ORABIF. Em desenvolvimento, ORABID, ORABI1D, ORABIFD. Em homologação, ORABIH, ORABI1H, ORABIFH. 
 
 Quais são as diferenças entre as bases ORABI, ORABI1 e ORABIF no BI? 
 
@@ -17,7 +17,9 @@ Quando uma equipe de projeto recebe uma demanda de ingestão de dados, se faz ne
 
 Caso a demanda envolva uma View, deve-se fazer ingestão das tabelas envolvidas e reproduzir a view no ambiente Azure (via Databricks, por exemplo), e não trazer diretamente a view do banco, de forma a não onerar o ambiente Oracle com essas consultas. 
 
-Os modelos de dados das bases de BI e Sistema de Negócio, e de algumas tabelas do JDE, podem ser encontrados no Portal Gestão de Dados, que dispõe de informações sobre as tabelas, como sua descrição com objetivo e dicionarização das colunas. Para mais informações sobre os conceitos do corporativo, como componente, ponto de venda, entre outros, consultar o material Conceitos do Corporativo. 
+Os modelos de dados das bases de BI e Sistema de Negócio, e de algumas tabelas do JDE, podem ser encontrados no 
+`Portal Gestão de Dados <https://grupoultracloud.sharepoint.com/sites/ipp-portalgestaodados>`_, que dispõe de informações sobre as tabelas, como sua descrição com objetivo e dicionarização das colunas. Para mais informações sobre os conceitos do corporativo, como componente, ponto de venda, entre outros, consultar o material 
+`Conceitos do Corporativo <https://grupoultracloud.sharepoint.com/:p:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Administra%C3%A7%C3%A3o de Dados/Documentos de Normas e Padr%C3%B5es/03. Apresenta%C3%A7%C3%B5es/Ipiranga_final.ppt?d=w89a6a27a88464c79aaa0b9850d18544a&csf=1&web=1&e=br4iMk>`_. 
 
 4.2 Power Center
 ===================
