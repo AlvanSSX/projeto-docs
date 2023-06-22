@@ -12,23 +12,24 @@ Na Ipiranga, o nosso Data Lake é constituído por 5 camadas, a saber: Transient
 * Refined: são armazenados os dados enriquecidos, consolidados, vindos da camada Trusted; 
 * Serving: para disponibilizar os arquivos que serão utilizados pelo usuário de negócio. 
 
-Para mais informações sobre a definição das camadas e padronizações, consultar o documento de Definição de Camadas do Data Lake.  
+Para mais informações sobre a definição das camadas e padronizações, consultar o documento de 
+`Definição de Camadas do Data Lake <https://grupoultracloud.sharepoint.com/:b:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Analytics/Engenharia/Data Lake Storage/Defini%C3%A7%C3%A3o de Camadas Data Lake.pdf?csf=1&web=1&e=X291S0>`_.  
 
-Atualmente, o nosso Data Lake produtivo é a storage account “stippdatalakedev”. É este o ambiente no qual os nossos pipelines, functions e notebooks armazenam os dados produtivos que são consumidos pelo negócio ou demais processos de engenharia ou de ciência de dados. Também possuímos uma storage account “stippdatalakelab” utilizada pelo time de ciência de dados e projetos para realizar testes de desenvolvimento, como se de fato fosse um laboratório. Aconselhamos que os novos processos de engenharia sejam testados inicialmente neste ambiente evitando assim que testes sejam realizados no Data Lake de produção. 
+Atualmente, o nosso Data Lake produtivo é a storage account **“stippdatalakedev”**. É este o ambiente no qual os nossos pipelines, functions e notebooks armazenam os dados produtivos que são consumidos pelo negócio ou demais processos de engenharia ou de ciência de dados. Também possuímos uma storage account **“stippdatalakelab”** utilizada pelo time de ciência de dados e projetos para realizar testes de desenvolvimento, como se de fato fosse um laboratório. Aconselhamos que os novos processos de engenharia sejam testados inicialmente neste ambiente evitando assim que testes sejam realizados no Data Lake de produção. 
 
 .. image:: /images/Imagem1.jpg
 
-Figura 1: Data Lake de Produção, container data 
+**Figura 1:** Data Lake de Produção, container **data** 
 
 .. image:: /images/Imagem2.jpg
 
-Figura 2: Data Lake de LAB, container data 
+**Figura 2:** Data Lake de LAB, container **data** 
 
-Para os dados sensíveis, existe uma storage account “stippdatalakelgpdhml” na qual armazenamos as tabelas que contém informações sensíveis, como CPF, nome de cliente, dados bancários, endereço, telefone etc. Porém, vale destacar que para ingerir tabelas com informações sensíveis é necessário ter autorização jurídica, e o mesmo vale para o projeto ou usuário que irá consumir estes dados.
+Para os dados sensíveis, existe uma storage account **“stippdatalakelgpdhml”** na qual armazenamos as tabelas que contém informações sensíveis, como CPF, nome de cliente, dados bancários, endereço, telefone etc. Porém, vale destacar que para ingerir tabelas com informações sensíveis é necessário ter autorização jurídica, e o mesmo vale para o projeto ou usuário que irá consumir estes dados.
 
 .. image:: /images/Imagem3.jpg
 
-Figura 3: Data Lake para dados sensíveis, container dados-sensiveis 
+**Figura 3:** Data Lake para dados sensíveis, container **dados-sensiveis** 
 
 Para mais informações sobre o Data Lake Storage, consulte a documentação da Microsoft: https://docs.microsoft.com/pt-br/azure/storage/blobs/data-lake-storageintroduction. 
 
@@ -42,9 +43,9 @@ Vale ressaltar que os engenheiros terão apenas acesso de leitura ao ambiente de
 
 O uso mais comum que fazemos do Logic App é para captura de arquivos enviados como anexos em e-mails, gravando esse arquivo no Data Lake. Além desse cenário, pode ser usado para trazer arquivos disponibilizados no SharePoint, ou mesmo fazer envio de email de notificação em caso de falha/sucesso em determinado processo. Casos que fujam dos mencionados devem ser levados à equipe de Governança Técnica para avaliação. 
 
-Uma ação que é possível de se realizar via Logic App, mas que não utilizamos na Ipiranga, é fazer chamada de pipelines do Data Factory. Toda orquestração de processos deve ser concentrada no ADF. No caso de Logic Apps, caso um processo precise ser executado após a disponibilização de um arquivo no storage, deve-se criar uma event trigger para capturar esse evento e acionar o pipeline. 
+Uma ação que é possível de se realizar via Logic App, mas que **não utilizamos** na Ipiranga, é fazer chamada de pipelines do Data Factory. T**Toda orquestração de processos deve ser concentrada no ADF**. No caso de Logic Apps, caso um processo precise ser executado após a disponibilização de um arquivo no storage, deve-se criar uma event trigger para capturar esse evento e acionar o pipeline. 
 
-Testes que envolvam envio ou recebimento de e-mails devem ser testados com o email Ipiranga do engenheiro e apontando para o storage de laboratório, stippdatalakelab. Quando for produtizado, essas conexões serão passadas para o email produtivo do Data Lake, svc.ipippdatalake-p@ultra.com.br, e storage produtivo, stippdatalakedev. 
+Testes que envolvam envio ou recebimento de e-mails devem ser testados com o email Ipiranga do engenheiro e apontando para o storage de laboratório, **stippdatalakelab**. Quando for produtizado, essas conexões serão passadas para o email produtivo do Data Lake, svc.ipippdatalake-p@ultra.com.br, e storage produtivo, **stippdatalakedev**. 
 
 Exemplos de Logic Apps existentes: 
 
@@ -56,7 +57,7 @@ Para mais informações sobre Logic Apps, consultar documentação da Microsoft 
 6.2.1 Fluxo de produtização
 -----------------------------
 
-A criação de Logic Apps é feita primeiramente no Resource Group do projeto em que o engenheiro estiver alocado, que normalmente segue o padrão rg-ipp-lab-[área do projeto], na subscription de LAB. 
+A criação de Logic Apps é feita primeiramente no Resource Group do projeto em que o engenheiro estiver alocado, que normalmente segue o padrão **rg-ipp-lab-[área do projeto]**, na subscription de LAB. 
 
 Quando o desenvolvimento for concluído, deve-se enviar um email para arquiteturadedados@ultra.com.br solicitando que o Logic App criado seja passado para o ambiente produtivo, informando os nomes dos processos criados para movimentação. 
 
@@ -71,16 +72,16 @@ Exemplos de pipelines de carga full e incremental abaixo.
 
     .. image:: /images/Imagem4.jpg
 
-Figura 4: Exemplo pipeline que faz a cópia full dos dados do banco de dados para Data Lake
+**Figura 4:** Exemplo pipeline que faz a cópia full dos dados do banco de dados para Data Lake
 
     .. image:: /images/Imagem5.jpg
 
-Figura 5: Exemplo pipeline que faz a cópia incremental dos dados do banco de dados para Data Lake 
+**Figura 5:** Exemplo pipeline que faz a cópia incremental dos dados do banco de dados para Data Lake 
 
 6.3.1 Ingestão de dados com filtros 
 ---------------------------------------
 
-Como descrito no documento de Definição de Camadas do Data Lake, não se deve usar no processo de ingestão querys que contenham joins, filtros ou agregações, mas sempre trazer o dado mais bruto possível, em seu menor grão. Isso porque diferentes projetos podem compartilhar de uma mesma (ou várias) tabelas, portanto, se cada um trouxesse as tabelas que precisa aplicando filtros específicos diretamente na origem, teríamos diversos processos de ingestão para uma mesma tabela. Qualquer exceção a isso deve ser levada ao time de Arquitetura para avaliação da necessidade.para avaliação da necessidade. 
+Como descrito no documento de `Definição de Camadas do Data Lake <https://grupoultracloud.sharepoint.com/:b:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Analytics/Engenharia/Data Lake Storage/Defini%C3%A7%C3%A3o de Camadas Data Lake.pdf?csf=1&web=1&e=X291S0>`_, **não se deve usar** no processo de ingestão **querys que contenham joins, filtros ou agregações**, mas sempre trazer o dado mais bruto possível, em seu menor grão. Isso porque diferentes projetos podem compartilhar de uma mesma (ou várias) tabelas, portanto, se cada um trouxesse as tabelas que precisa aplicando filtros específicos diretamente na origem, teríamos diversos processos de ingestão para uma mesma tabela. Qualquer exceção a isso deve ser levada ao time de Arquitetura para avaliação da necessidade.para avaliação da necessidade. 
 
 6.3.2 Conversão de tipos
 --------------------------
@@ -92,7 +93,7 @@ Atualmente, para cargas full, utilizamos o Synapse para realizar a conversão de
 6.3.3 Orquestração de processos
 ---------------------------------
 
-Utilizamos o Data Factory como nosso orquestrador oficial de processos. É possível fazer agendamento de notebooks Databricks, encadeamento de pipelines, agendamento de pipelines através de time triggers ou event triggers etc. Apenas functions utilizam agendamento próprio, através do arquivo function.json que define o gatilho, as associações e outras definições de configuração da função, sendo esse arquivo único para cada function. 
+Utilizamos o Data Factory como nosso orquestrador oficial de processos. É possível fazer agendamento de notebooks Databricks, encadeamento de pipelines, agendamento de pipelines através de time triggers ou event triggers etc. Apenas functions utilizam agendamento próprio, através do arquivo **function.json** que define o gatilho, as associações e outras definições de configuração da função, sendo esse arquivo único para cada function. 
 
 6.3.4 Uso do Dataflow
 -----------------------
@@ -101,14 +102,15 @@ Utilizamos o Dataflow principalmente para cargas incrementais, particionando os 
 
     .. image:: /images/Imagem6.jpg
 
-Figura 6: Exemplo de estrutura de Dataflow 
+**Figura 6:** Exemplo de estrutura de Dataflow 
 
 Apesar de existir alguns pipelines que podemos utilizar como referência para novos desenvolvimentos, é necessário entender primeiramente a lógica de carga da tabela a ser ingerida, para construir o processo da melhor forma, inclusive, definir o melhor particionamento. 
 
 6.3.5 Criação de datasets
 ---------------------------
 
-Novos datasets só devem ser criados caso os que já existem não atendam a necessidade do processo, e nesse caso, deve-se consultar o documento de Padrão de Desenvolvimento do Data Factory para definir nomes e configurações. Para consultar os datasets permitidos, acessar documento de Padrão de Datasets. 
+Novos datasets só devem ser criados caso os que já existem não atendam a necessidade do processo, e nesse caso, deve-se consultar o documento de 
+`Padrão de Desenvolvimento do Data Factory <https://grupoultracloud.sharepoint.com/:b:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Analytics/Engenharia/Data Factory/Data Factory - Padr%C3%A3o de Desenvolvimento.pdf?csf=1&web=1&e=7BG4HR>`_ para definir nomes e configurações. Para consultar os datasets permitidos, acessar documento de Padrão de Datasets. 
 
 6.3.6 Parametrização de pipelines e datasets
 ---------------------------------------------
