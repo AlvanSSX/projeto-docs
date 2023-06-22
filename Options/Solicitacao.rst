@@ -3,7 +3,7 @@
 
 3.1 Ambiente Azure
 ===================
-Para solicitar acesso a recursos do nosso ambiente Azure, deve ser preenchido o Formulário de Concessão de Acessos. <https://tinyurl.com/form-acesso/>` Ali, devem ser preenchidas as seguintes informações:
+Para solicitar acesso a recursos do nosso ambiente Azure, deve ser preenchido o `Formulário de Concessão de Acessos <https://tinyurl.com/form-acesso>`_. Ali, devem ser preenchidas as seguintes informações:
 
 * Para quem está sendo solicitado o acesso; 
 * Gestor que aprovará a solicitação; em geral, é o líder do projeto do lado Ipiranga; 
@@ -39,14 +39,14 @@ Para criação de objetos, como tabelas ou views, é necessário incluir na tare
 * Projeto para o qual está sendo criada a tabela 
 * Motivo/objetivo da criação 
 * Nome do banco onde será feita a criação 
-* Planilha de dicionarização, preenchida com informações sobre a estrutura da tabela. O modelo dessa planilha e detalhes sobre preenchimento podem ser encontrados no Portal Gestão de Dados. 
+* Planilha de dicionarização, preenchida com informações sobre a estrutura da tabela. O modelo dessa planilha e detalhes sobre preenchimento podem ser encontrados no `Portal Gestão de Dados <https://grupoultracloud.sharepoint.com/sites/ipp-portalgestaodados/SitePages/Dicionariza%C3%A7%C3%A3o-de-Estruturas-de-Dados.aspx>`_. 
 * Observação: tabelas no Azure SQL devem ser normalizadas. O time de Arquitetura aprova a arquitetura geral do projeto, mas a modelagem das tabelas a serem criadas deve passar por avaliação e aprovação do time de Administração de Dados 
   
 
 3.3 Oracle
 ===========
 
-O processo para solicitação de acesso de usuários pessoais (para analistas e desenvolvedores) à tabelas no ambiente Oracle é descrito no seguinte documento desenvolvido pelo time de Administração de Dados, Processo de solicitação de acesso, disponível no Portal Gestão de Dados.
+O processo para solicitação de acesso de usuários pessoais (para analistas e desenvolvedores) à tabelas no ambiente Oracle é descrito no seguinte documento desenvolvido pelo time de Administração de Dados, `Processo de solicitação de acesso <https://grupoultracloud.sharepoint.com/:b:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Administra%C3%A7%C3%A3o de Dados/Processo de Solicita%C3%A7%C3%A3o de Acesso em Produ%C3%A7%C3%A3o/AD - Processo solicita%C3%A7%C3%A3o de acesso - BI.pdf?csf=1&web=1&e=wUlLrn>`_, disponível no Portal Gestão de Dados.
 
 Para desenvolvimento de processos de ingestão do Oracle para o Data Lake, é necessário solicitar acesso às tabelas em questão para o usuário DLETL, o usuário de banco do Data Lake. Antes de qualquer coisa, orientamos que seja verificado se já não existe algum processo para esse mesmo fim, o que dispensaria um novo desenvolvimento. Para abrir essa solicitação de acesso, deve-se criar uma tarefa via ALM ou Jira, incluindo as informações:
 
@@ -70,7 +70,7 @@ A solicitação de acesso para o ambiente do JDE segue o mesmo padrão descrito 
 3.5 ABADI
 ===========
 
-Para solicitação de acesso a tabelas do ABADI, deve ser aberto uma RDM via Portal de Serviços, solicitando acesso ao usuário ABADIDL para a base necessária. Para que seja concedido, é preciso aprovação dupla dos times de Gestão De Demandas Ti - Op e Coord. Serviços A Sistemas. 
+Para solicitação de acesso a tabelas do ABADI, deve ser aberto uma RDM via `Portal de Serviços <https://portaldeservicos.ultra.com.br/ipiranga>`_, solicitando acesso ao usuário **ABADIDL** para a base necessária. Para que seja concedido, é preciso aprovação dupla dos times de Gestão De Demandas Ti - Op e Coord. Serviços A Sistemas. 
 
-Existe uma instância chamada Shadow, que é um espelho do ABADI, tendo sido projetada para evitar onerar o banco produtivo com querys de projetos e múltiplas requisições que possam ser necessárias. Novos processos devem preferencialmente consumir dados a partir dessa instância. 
+Existe uma instância chamada **Shadow**, que é um espelho do ABADI, tendo sido projetada para evitar onerar o banco produtivo com querys de projetos e múltiplas requisições que possam ser necessárias. Novos processos devem preferencialmente consumir dados a partir dessa instância. 
 
