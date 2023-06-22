@@ -5,7 +5,7 @@
 
     .. image:: /images/tabela.png
 
-    Tabela 1: Estrutura time Engenharia de Dados e Analytics.
+    **Tabela** 1: Estrutura time Engenharia de Dados e Analytics.
     
     A equipe de Governança Técnica é a responsável por lidar com questões do dia a dia dos desenvolvedores, e é com quem terão mais contato. Essa equipe deve ser acionada, por exemplo, para esclarecer dúvidas sobre padrões de processos, apontar impedimentos no desenvolvimento, notificar sobre problemas em processos etc. Além disso, é quem faz a avaliação e aprovação de pull requests para passagem de processos para o ambiente produtivo.
     
