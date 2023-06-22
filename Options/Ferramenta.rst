@@ -115,52 +115,52 @@ Novos datasets só devem ser criados caso os que já existem não atendam a nece
 6.3.6 Parametrização de pipelines e datasets
 ---------------------------------------------
 
-Adotamos a prática de utilização de parâmetros em pipelines e dataflows, para que em casos de manutenções, a alteração seja concentrada num único ponto. Esses parâmetros ficam num arquivo json, que deve ser carregado na pasta “data/_conf/”, e a leitura dele é feita a partir de uma atividade de Lookup. 
+Adotamos a prática de utilização de parâmetros em pipelines e dataflows, para que em casos de manutenções, a alteração seja concentrada num único ponto. Esses parâmetros ficam num arquivo json, que deve ser carregado na pasta **“data/_conf/”**, e a leitura dele é feita a partir de uma atividade de Lookup. 
 
     .. image:: /images/Imagem7.jpg
 
-Figura 7: Exemplo de parâmetros passados para um dataflow 
+**Figura 7:** Exemplo de parâmetros passados para um dataflow 
 
 Além de pipelines, também utilizamos datasets parametrizados. Isso permite que um mesmo dataset seja utilizado por diversos processos. Por exemplo, no caso de datasets para bancos de dados, passamos o owner e nome da tabela a ser acessada; para arquivos do storage, passamos contêiner, diretório, nome do arquivo e tipo de compressão. 
 
     .. image:: /images/Imagem8.jpg
 
-Figura 8: Exemplo de dataset parquet que aponta para o storage produtivo 
+**Figura 8:** Exemplo de dataset parquet que aponta para o storage produtivo 
 
     .. image:: /images/Imagem9.jpg
 
-Figura 9: Exemplo de uso de dataset parametrizado e passagem dos parâmetros 
+**Figura 9:** Exemplo de uso de dataset parametrizado e passagem dos parâmetros 
 
     .. image:: /images/Imagem10.jpg
 
-Figura 10: Exemplo de dataset que permite a conexão com o Oracle 
+**Figura 10:** Exemplo de dataset que permite a conexão com o Oracle 
 
     .. image:: /images/Imagem11.jpg
 
-Figura 11: Exemplo de dataset destinado a arquivos no formato parquet, para leitura ou escrita 
+**Figura 11:** Exemplo de dataset destinado a arquivos no formato parquet, para leitura ou escrita 
 
 Também é possível importar dados do próprio Data Lake, fazer algum tipo de conversão, como alterar o tipo do dado de CSV para parquet ou XLSX para parquet. Para isso basta usar uma atividade de cópia em que o Source seja um dataset do tipo do arquivo de origem que se deseja converter, e o Sink seja um dataset do tipo do arquivo para o qual se deseja converter. Abaixo um exemplo de conversão de XLSX para parquet, utilizando datasets parametrizados já existentes. 
 
     .. image:: /images/Imagem12.jpg
 
-Figura 12: Exemplo de conversão de XLSX para parquet 
+**Figura 12:** Exemplo de conversão de XLSX para parquet 
 
     .. image:: /images/Imagem13.jpg
 
-Figura 13: Exemplo de conversão de XLSX para parquet 
+**Figura 13:** Exemplo de conversão de XLSX para parquet 
 
 6.3.7 Exemplos de pipelines
 -----------------------------
 
-* Ingestão para carga full dos dados vindos do Oracle: pip_dm_tipo_projeto_synapse
-* Ingestão para carga incremental dos dados vindos do Oracle: pip_pr_situacao_componente, trazendo os dados por DT_INCL
-* Ingestão para carga incremental dos dados vindos do Oracle: pip_pr_situacao_movimento_comp, trazendo os dados por DT_INCL ou DT_ALTER
-* Pipeline responsável por copiar os dados do Data Lake X para o Data Lake Y: pip_move_output_anp
-* Pipeline responsável por copiar os dados do Data Lake X para Data Lake Y caso na base final não tenha o arquivo com a versão mais atual: pip_move_demanda_vendas_sales_rslt
-* Pipeline que executa um notebook Databricks: pip_base_ofertas_notebook_dtb
-* Pipeline que transforma os dados a partir de um output gerado por outro processo e insere esses dados transformados em uma base transacional: pip_interface_sitelocation_salesforce (avaliar com muito cuidado as demandas deste tipo e identificar a real necessidade)
-* Pipeline que transforma um arquivo xlsx para parquet: pip_cst_xls_dm_derivados_biocombustiveis
-* Pipeline que lê um arquivo xlsx e extrai as abas existentes na planilha, gravando cada uma como um arquivo parquet único: pip_converte_xlsx_parquet_exp_dados_manuais
+* Ingestão para carga full dos dados vindos do Oracle: **pip_dm_tipo_projeto_synapse**
+* Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_componente**, trazendo os dados por DT_INCL
+* Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_movimento_comp**, trazendo os dados por DT_INCL ou DT_ALTER
+* Pipeline responsável por copiar os dados do Data Lake X para o Data Lake Y: **pip_move_output_anp**
+* Pipeline responsável por copiar os dados do Data Lake X para Data Lake Y caso na base final não tenha o arquivo com a versão mais atual: **pip_move_demanda_vendas_sales_rslt**
+* Pipeline que executa um notebook Databricks: **pip_base_ofertas_notebook_dtb**
+* Pipeline que transforma os dados a partir de um output gerado por outro processo e insere esses dados transformados em uma base transacional: **pip_interface_sitelocation_salesforce** (avaliar com muito cuidado as demandas deste tipo e identificar a real necessidade)
+* Pipeline que transforma um arquivo xlsx para parquet: **pip_cst_xls_dm_derivados_biocombustiveis**
+* Pipeline que lê um arquivo xlsx e extrai as abas existentes na planilha, gravando cada uma como um arquivo parquet único: **pip_converte_xlsx_parquet_exp_dados_manuais**
 
 6.3.8 Fluxo de produtização
 ----------------------------
@@ -169,21 +169,21 @@ No Data Factory trabalhamos com o modo GIT, portanto, novos desenvolvimentos dev
 
     .. image:: /images/Imagem14.jpg
 
-Figura 14: Exemplo de criação de branch no ADF 
+**Figura 14:** Exemplo de criação de branch no ADF 
 
 Com o desenvolvimento pronto e testado, e a branch validada, deve ser criado um pull request (opção também exibida na imagem acima). Essa opção levará para uma página do DevOps, onde deverão ser preenchidas as informações sobre as alterações sendo realizadas na branch. 
 
-Criado o pull request, ele entrará em fila para avaliação da equipe de Governança Técnica, que avaliará a adequação do desenvolvimento aos padrões definidos pela Arquitetura, e poderá solicitar ajustes se necessário, devendo o engenheiro verificar o que foi apontado e corrigir. São necessárias 2 aprovações do grupo “Aprovação Pull Request” para finalização, e após esse processo, o pull request deverá ser completado pelo engenheiro. 
+Criado o pull request, ele entrará em fila para avaliação da equipe de Governança Técnica, que avaliará a adequação do desenvolvimento aos padrões definidos pela Arquitetura, e poderá solicitar ajustes se necessário, devendo o engenheiro verificar o que foi apontado e corrigir. São necessárias 2 aprovações do grupo **“Aprovação Pull Request”** para finalização, e após esse processo, o pull request deverá ser completado pelo engenheiro. 
 
     .. image:: /images/Imagem15.jpg
 
-Figura 15: Exemplo de finalização de pull request 
+**Figura 15:** Exemplo de finalização de pull request 
 
-Após a conclusão do merge entre as branchs, ainda será necessário publicar as alterações no ADF, e isso é feito selecionando a branch master e em seguida a opção Publish. As alterações serão listadas e o desenvolvedor deverá dar o Ok para a publicação iniciar. 
+Após a conclusão do merge entre as branchs, ainda será necessário publicar as alterações no ADF, e isso é feito selecionando a branch master e em seguida a opção **Publish**. As alterações serão listadas e o desenvolvedor deverá dar o Ok para a publicação iniciar. 
 
     .. image:: /images/Imagem16.jpg
 
-Figura 16: Exemplo de tela do Data Factory para publicação de alterações 
+**Figura 16:** Exemplo de tela do Data Factory para publicação de alterações 
 
 Para mais detalhes sobre o fluxo de produtização, consultar a documentação de padrões do Data Factory. 
 
