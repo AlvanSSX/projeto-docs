@@ -189,10 +189,10 @@ Para mais detalhes sobre o fluxo de produtização, consultar a documentação d
 
 6.3.9 Documentação
 ---------------------
-O nosso Data Factory de produção chama-se adf-ipp-datalake-dev. Para mais informações sobre o nosso padrão de desenvolvimento e padrão de datasets, consultar os documentos abaixo: 
+O nosso Data Factory de produção chama-se **adf-ipp-datalake-dev**. Para mais informações sobre o nosso padrão de desenvolvimento e padrão de datasets, consultar os documentos abaixo: 
 
-* Padrão de Desenvolvimento no Data Factory 
-* Datasets padrão para utilização no Data Factory 
+* `Padrão de Desenvolvimento no Data Factory <https://grupoultracloud.sharepoint.com/:b:/r/sites/ipp-portalgestaodados/Documentos%20Compartilhados/Analytics/Engenharia/Data%20Factory/Data%20Factory%20-%20Padr%C3%A3o%20de%20Desenvolvimento.pdf?csf=1&web=1&e=jRASHO>`_ 
+* `Datasets padrão para utilização no Data Factory <https://grupoultracloud.sharepoint.com/:x:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Analytics/Engenharia/Data Factory/Data Factory - Datasets Padr%C3%A3o.xlsx?d=w0f545456bf7048dab8c0c5f157cccc34&csf=1&web=1&e=z64Wd6>`_ 
 
 Para mais informações sobre o Data Factory, consultar documentação da Microsoft: https://docs.microsoft.com/pt-br/azure/data-factory/.
 
@@ -201,14 +201,14 @@ Para mais informações sobre o Data Factory, consultar documentação da Micros
 
 Em nossa arquitetura, usamos as Functions para construção de códigos que trazem dados de APIs ou códigos que fazem web scraping, e elas são executadas no ambiente Azure. Atualmente, temos dois padrões de desenvolvimento convivendo. 
 
-Antes de iniciar o desenvolvimento, o documento Guia para Configuração dos Pré - Requisitos do Azure Function orienta sobre a preparação do ambiente. 
+Antes de iniciar o desenvolvimento, o documento `Guia para Configuração dos Pré– Requisitos do Azure Function <https://grupoultracloud.sharepoint.com/:w:/s/ipp-equipeanalytics/EeuRlUmgIpFBndtD7Y5iX2EBfKcZE0-srvQmxhd7Zz1IIw?e=HCHEXc>`_ orienta sobre a preparação do ambiente. 
 
 6.4.1	Padrão de desenvolvimento
 ----------------------------------
 
 Padrão de desenvolvimento anterior 
 
-O primeiro, mais antigo, faz o versionamento no repositório prj-datalakewebscraping e function app func-ipp-datalake-dev. É usado para functions antigas e squads que não possuem ambiente próprio. O documento Guia para Function orienta sobre o uso. 
+O primeiro, mais antigo, faz o versionamento no repositório **prj-datalakewebscraping** e function app **func-ipp-datalake-dev**. É usado para functions antigas e squads que não possuem ambiente próprio. O documento `Guia para Function <https://grupoultracloud.sharepoint.com/:w:/r/sites/ipp-portalgestaodados/Documentos%20Compartilhados/Analytics/Engenharia/Function/Guia%20para%20Function%20-%20PR%20Repo%20e%20Deploy%20Function%20App.docx?d=w79e31de374f74365afb9b5a59fef62fd&csf=1&web=1&e=ZaZ6U2>`_ orienta sobre o uso. 
 
 Padrão de desenvolvimento atual 
 
@@ -224,12 +224,12 @@ Fluxo para desenvolvimento e versionamento
 6.	Quando o desenvolvimento estiver concluído, para testar o que foi feito, podese voltar na extensão da Azure indo no recurso desejado e fazendo o deploy da function para o ambiente de LAB; 
 7.	Após testar e validar em LAB, criar um pull request via DevOps para aprovação dos revisores e subida para o ambiente de produção. 
 
-Observação: se a branch ficar aberta por muito tempo, o ideal é utilizar o comando "git fetch" e "git pull". 
+**Observação:** se a branch ficar aberta por muito tempo, o ideal é utilizar o comando "git fetch" e "git pull". 
 
 Pasta sharedCode 
 
-1.	functions.py contém alguns métodos de uso comum, como para acesso à storage account, e ler e gravar arquivos no Data Lake. Métodos de uso específico devem ser definidos dentro da function em que serão usados. 
-2.	arquivosAcessoCamada.py deve ser editado com as referências aos arquivos de parâmetros de cada function, compondo uma chave no padrão abaixo:
+1.	**functions.py** contém alguns métodos de uso comum, como para acesso à storage account, e ler e gravar arquivos no Data Lake. Métodos de uso específico devem ser definidos dentro da function em que serão usados. 
+2.	**arquivosAcessoCamada.py** deve ser editado com as referências aos arquivos de parâmetros de cada function, compondo uma chave no padrão abaixo:
 
 ::
 
@@ -242,26 +242,26 @@ Pasta sharedCode
    
      3.1.	Cada function deve ter seu próprio arquivo de parâmetros, e o nome do json deve ser igual ao de sua function
      
-     3.2.	Os arquivos devem ser armazenados no próprio repositório, na pasta sharedCode
+     3.2.	Os arquivos devem ser armazenados no próprio repositório, na pasta **sharedCode**
      
      3.3.	Os diretórios acessados pelo código, para leitura e escrita, devem estar especificados no json
      
-     3.4.	O arquivo é recuperado usando o método get_directories
+     3.4.	O arquivo é recuperado usando o método **get_directories**
      
      3.5.	Descrição das chaves do json: 
 
-        * processInformation deve conter informações básicas do processo 
+        * **processInformation** deve conter informações básicas do processo 
   
             * resourceName: nome do function app onde será armazenada a function 
-            * applicationName: nome da function, respeitando o padrão af_[fontes_internas ou fontes_externas]_[descrição]
+            * applicationName: nome da function, respeitando o padrão **af_[fontes_internas ou fontes_externas]_[descrição]**
             * processDescription: breve descrição sobre objetivo da function
-        * DatasetSource deve conter as informações de cada fonte de leitura da function
+        * **DatasetSource** deve conter as informações de cada fonte de leitura da function
           
             * Name: nome que será usado para se referenciar àquela base no código
             * FileSystem: container onde está contido o dado 
             * Directory: caminho onde o dado está contido no storage
             * FileName: nome do arquivo 
-        * DatasetTarget, analogamente ao anterior, deve conter as informações de cada destino de escrita da function.
+        * **DatasetTarget**, analogamente ao anterior, deve conter as informações de cada destino de escrita da function.
   
      3.6.	Exemplo de json:
             
@@ -296,22 +296,22 @@ Pasta sharedCode
 Orientações gerais
 
 1.	Variáveis de ambiente devem ser usadas para fazer referência a storage account; 
-2.	Tokens e afins devem ser referenciados através de key vaults, que são criados pela equipe de Infra. 
+2.	Tokens e afins devem ser referenciados através de **key vaults**, que são criados pela equipe de Infra. 
 
 6.4.2 Instruções para novas functions
 --------------------------------------
 
 * Functions devem ter processamento curto. 
-* Functions com processamento longo, devem ser orquestradas com funções duráveis; 
-* Functions que precisem de acesso a outros recursos devem usar a biblioteca de identidade; 
-* Você pode configurar o seu ambiente com VS Code ou como melhor preferir; 
-* Todas as variáveis relacionadas ao ambiente devem ser definidas usando o json local.settings.json; 
+* Functions com processamento longo, devem ser orquestradas com `funções duráveis <https://docs.microsoft.com/pt-br/azure/azure-functions/durable/durable-functions-overview?tabs=csharp>`_; 
+* Functions que precisem de acesso a outros recursos devem usar a `biblioteca de identidade <https://docs.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python>`_; 
+* Você pode configurar o seu ambiente com `VS Code <https://docs.microsoft.com/pt-br/azure/azure-functions/functions-develop-vs-code?tabs=csharp>`_ ou como melhor preferir; 
+* Todas as variáveis relacionadas ao ambiente devem ser definidas usando o `local.settings.json <https://docs.microsoft.com/pt-br/azure/azure-functions/functions-develop-vs-code?tabs=csharp#local-settings>`_; 
 * Todas as funções precisam ter um ou mais casos de teste que devem ser versionados e fazem parte do processo de validação. 
 
 6.4.3 Fluxo de produtização
 -----------------------------
 
-Dentro de cada área de projeto no DevOps, haverá um repositório de function, com nome no padrão prj-[área]-afa, onde será feito o versionamento dos códigos. Por exemplo, para projetos que utilizam o ambiente do PCO, o local será https://dev.azure.com/ipiranga-dev/prj-pco/_git/prj-pco-afa. 
+Dentro de cada área de projeto no DevOps, haverá um repositório de function, com nome no padrão **prj-[área]-afa**, onde será feito o versionamento dos códigos. Por exemplo, para projetos que utilizam o ambiente do PCO, o local será https://dev.azure.com/ipiranga-dev/prj-pco/_git/prj-pco-afa. 
 
 Para cada novo desenvolvimento, é necessário criar uma branch para commitar as alterações. Essa branch pode ser importada no VS Code para testar localmente (para isso, o documento mencionado no início dessa seção pode ser usado como referência para preparar o ambiente local).  
 
@@ -319,6 +319,15 @@ Para cada novo desenvolvimento, é necessário criar uma branch para commitar as
 
 6.5 Databricks
 ===============
+
+Na Ipiranga, utilizamos o Databricks com as linguagens **PySpark** e **Spark SQL** para manipular grandes conjuntos de dados, transformá-los, realizar limpeza nos dados, remoção de duplicidades, criação de novas tabelas, replicação de relatórios, seja na extensão CSV ou parquet, entre outras ações.
+
+Os workspaces Databricks para desenvolvimento são criados por áreas, e para cada projeto, será concedido acesso ao workspace da área a qual ele pertence. Sendo assim, o desenvolvimento será feito no ambiente de LAB da área e, após o fluxo de produtização, passará para o workspace produtivo.
+
+No workspace de LAB, é possível fazer leitura e escrita no storage stippdatalakelab, utilizando o ponto de montagem **/mnt/[área]/dev/**, e apenas leitura no storage produtivo, stippdatalakedev, utilizando o ponto de montagem **/mnt/[área]/prd/**. 
+
+6.5.1 Organização
+-------------------
 
 A organização das pastas dentro do workspace (e repositório) deverá ser feita conforme padrão:
 
@@ -348,9 +357,9 @@ A organização das pastas dentro do workspace (e repositório) deverá ser feit
 6.5.2 Pasta config
 -------------------
 
-No repositório das áreas, cada projeto deverá ter a própria pasta config. Dentro dela, deve haver 2 artefatos principais a serem usados em todos os notebooks, que são os arquivos criaListaCamadas.py e acessoCamadas.py. 
+No repositório das áreas, cada projeto deverá ter a própria pasta **config**. Dentro dela, deve haver 2 artefatos principais a serem usados em todos os notebooks, que são os arquivos **criaListaCamadas.py** e **acessoCamadas.py**. 
 
-Nesses notebooks, haverá duas variáveis importantes. A primeira, escopoArea é o nome da área a que pertence o workspace, e é usada para “construir” o ponto de montagem a ser usado nas funções de acesso a arquivos. A segunda, escopoProjeto é o nome do projeto, e é usada para construir o caminho no sistema de arquivos do Databricks onde serão gravados os arquivos de apoio. 
+Nesses notebooks, haverá duas variáveis importantes. A primeira, **escopoArea** é o nome da área a que pertence o workspace, e é usada para “construir” o ponto de montagem a ser usado nas funções de acesso a arquivos. A segunda, **escopoProjeto** é o nome do projeto, e é usada para construir o caminho no sistema de arquivos do Databricks onde serão gravados os arquivos de apoio. 
 
 Notebook criaListaCamadas.py 
 
@@ -358,21 +367,21 @@ Nesse notebook devem ser especificados os diretórios e arquivos do storage que 
 
 São 3 chaves a serem preenchidas:
 
-* baseLeitura, onde devem estar os diretórios acessados para leitura; 
-* baseEscrita, onde devem estar os diretórios acessados para escrita; 
-* baseArquivos, onde devem estar os nomes dos arquivos que serão acessados. 
+* **baseLeitura**, onde devem estar os diretórios acessados para leitura; 
+* **baseEscrita**, onde devem estar os diretórios acessados para escrita; 
+* **baseArquivos**, onde devem estar os nomes dos arquivos que serão acessados. 
 
     .. image:: /images/imagem17.jpg
 
-Figura 17: Exemplo de preenchimento do notebook criaListaCamadas.py 
+**Figura 17:** Exemplo de preenchimento do notebook criaListaCamadas.py 
 
 Se um diretório for acessado para leitura e escrita, deve ser especificado em ambas as chaves. 
 
-A partir dessas chaves, 3 arquivos json serão criados no sistema de arquivos: baseLeitura.json, baseEscrita.json e baseArquivos.json. Eles serão usados no próximo notebook. 
+A partir dessas chaves, 3 arquivos json serão criados no sistema de arquivos: **baseLeitura.json**, **baseEscrita.json** e **baseArquivos.json**. Eles serão usados no próximo notebook. 
 
     .. image:: /images/imagem18.jpg
 
-Figura 18: Exemplo de preenchimento do notebook criaListaCamadas.py 
+**Figura 18:** Exemplo de preenchimento do notebook criaListaCamadas.py 
 
 Deve ser executado no início de cada processo que o utiliza, para garantir que os arquivos de base estejam sempre atualizados. 
 
@@ -380,27 +389,27 @@ Notebook acessoCamadas.py
 
 É um notebook padrão, que será disponibilizado na pasta do projeto na criação do ambiente. Define as variáveis e métodos a serem usados nos notebooks para acesso aos arquivos, para leitura e gravação. No notebook estão disponíveis instruções para uso, bem como alguns exemplos.  
 
-A partir dos arquivos base criados no notebook criaListaCamadas.py, serão criados os dataframes usados nos métodos de leitura e escrita. 
+A partir dos arquivos base criados no notebook **criaListaCamadas.py**, serão criados os dataframes usados nos métodos de leitura e escrita. 
 
     .. image:: /images/imagem19.jpg
 
-Figura 19: Exemplo do notebook acessoCamadas.py 
+**Figura 19:** Exemplo do notebook acessoCamadas.py 
 
 6.5.3 Orquestração de processos
 ----------------------------------
 
-Assim como mencionado na seção de Logic Apps, toda orquestração de processos deve ser concentrada no ADF, de forma a centralizar o monitoramento em um único local. No caso do Databricks, deve ser criado um pipeline onde o notebook será chamado através de uma atividade “Notebook”. O uso de Jobs do ADB não é livre, qualquer necessidade nesse sentido deve ser levada para avaliação pela equipe de Arquitetura.  
+Assim como mencionado na seção de Logic Apps, toda orquestração de processos deve ser concentrada no ADF, de forma a centralizar o monitoramento em um único local. No caso do Databricks, deve ser criado um pipeline onde o notebook será chamado através de uma atividade **“Notebook”**. O uso de Jobs do ADB não é livre, qualquer necessidade nesse sentido deve ser levada para avaliação pela equipe de Arquitetura.  
 
 6.5.4 Dados sensíveis
 ------------------------
 
-Possuímos ainda um workspace Databricks, dtb-ipp-sensiveis-prd, utilizado para trabalhar com dados sensíveis, como dados cadastrais de nossos clientes, sejam dados bancários, CPF, endereço, telefone, email etc, tal como dtb-ipp-sensiveis-dev. Caso um projeto precise trabalhar com dados sensíveis, contidos no storage stippdatalakelgpdhml, através do Databricks, deve ser solicitado acesso ao workspace mencionado, pois é o único que possui acesso de leitura e escrita para esse storage. 
+Possuímos ainda um workspace Databricks, **dtb-ipp-sensiveis-prd**, utilizado para trabalhar com dados sensíveis, como dados cadastrais de nossos clientes, sejam dados bancários, CPF, endereço, telefone, email etc, tal como **dtb-ipp-sensiveis-dev**. Caso um projeto precise trabalhar com dados sensíveis, contidos no storage stippdatalakelgpdhml, através do Databricks, deve ser solicitado acesso ao workspace mencionado, pois é o único que possui acesso de leitura e escrita para esse storage. 
 
 6.5.5 Boas práticas e orientações gerais
 ------------------------------------------
 
-* Usar o PySpark no lugar do Python puro, uma vez que este inviabiliza o uso do processamento paralelo pelo Spark; 
-* Caso necessário utilizar a biblioteca pandas, importar a do Spark, pyspark.pandas, uma vez que o Spark é multithread e seu código pode ser executado de forma distribuída; 
+* Usar o **PySpark** no lugar do Python puro, uma vez que este inviabiliza o uso do processamento paralelo pelo Spark; 
+* Caso necessário utilizar a biblioteca pandas, importar a do Spark, **pyspark.pandas**, uma vez que o Spark é multithread e seu código pode ser executado de forma distribuída; 
 * Não fazer leitura de arquivos XLSX ou XLS no Databricks, uma vez que esta extensão reduz consideravelmente o desempenho do cluster. Para trabalhar com dados que originalmente possuem esse tipo de extensão, recomendados a utilização do Data Factory para conversão para parquet; 
 * Não é permitido produtizar processos apontando para o workspace de LAB, portanto, toda alteração deve ser produtizada, ou os outputs corretos serão escritos apenas no storage de LAB; 
 * Arquivos temporários de processos devem ser escritos na camada transient, conforme padrão de camadas definido; 
@@ -429,48 +438,48 @@ Possuímos ainda um workspace Databricks, dtb-ipp-sensiveis-prd, utilizado para 
 6.5.6 Fluxo de produtização
 -----------------------------
 
-No DevOps do projeto, o engenheiro deverá criar uma branch no repositório do Databricks, prj-[área]-adb, a partir da branch master. 
+No DevOps do projeto, o engenheiro deverá criar uma branch no repositório do Databricks, **prj-[área]-adb**, a partir da branch master. 
 
     .. image:: /images/Imagem20.jpg
 
-Figura 20: Exemplo de criação de branch para repositório Databricks 
+**Figura 20:** Exemplo de criação de branch para repositório Databricks 
 
-No workspace Databricks de LAB, os notebooks que serão produtizados, sejam alterações ou novos desenvolvimentos, devem ser associados a esta nova branch, indo na opção Revision History e clicando na opção Git (onde deve aparecer, inicialmente, “Git: Not Linked”) 
+No workspace Databricks de LAB, os notebooks que serão produtizados, sejam alterações ou novos desenvolvimentos, devem ser associados a esta nova branch, indo na opção **Revision History** e clicando na opção **Git** (onde deve aparecer, inicialmente, “Git: Not Linked”) 
 
     .. image:: /images/Imagem21.jpg
 
-Figura 21: Exemplo de associação de notebook Databricks a uma branch 
+**Figura 21:** Exemplo de associação de notebook Databricks a uma branch 
 
-Ali, mudar status para Link, inserir o link de clone do repositório e selecionar a branch criada. O path do repositório deve respeitar o padrão indicado na seção 6.5.1, incluindo a estrutura de diretórios abaixo do nível “notebooks/”. 
+Ali, mudar status para **Link**, inserir o link de clone do repositório e selecionar a branch criada. O path do repositório deve respeitar o padrão indicado na seção 6.5.1, incluindo a estrutura de diretórios abaixo do nível “notebooks/”. 
 
     .. image:: /images/Imagem22.jpg
 
-Figura 22: Exemplo de configuração para versionamento de notebook 
+**Figura 22:** Exemplo de configuração para versionamento de notebook 
 
 Após salvar essa configuração, deve-se adicionar o comentário de versionamento para fazer o commit na branch: 
 
     .. image:: /images/Imagem23.jpg
 
-Figura 23: Exemplo de versionamento de notebook 
+**Figura 23:** Exemplo de versionamento de notebook 
 
     .. image:: /images/Imagem24.jpg
 
 
-Figura 24: Exemplo de versionamento de notebook 
+**Figura 24:** Exemplo de versionamento de notebook 
  
 Então, a estrutura criada, e alterações feitas deverão constar na branch 
 
     .. image:: /images/Imagem25.jpg
 
 
-Figura 25: Exemplo de branch atualizada após commit 
+**Figura 25:** Exemplo de branch atualizada após commit 
 
-Cada nova alteração no notebook deve ser commitada por esse mesmo menu de Revision History, através da opção Save now. Caso não seja feito, não será sincronizado com a branch a ser produtizada. Para checar se a alteração foi salva, pode-se consultar o histórico de commits na aba History de cada notebook da branch: 
+Cada nova alteração no notebook deve ser commitada por esse mesmo menu de **Revision History**, através da opção **Save now**. Caso não seja feito, não será sincronizado com a branch a ser produtizada. Para checar se a alteração foi salva, pode-se consultar o histórico de commits na aba **History** de cada notebook da branch: 
 
     .. image:: /images/Imagem26.jpg
 
-Figura 26: Exemplo de tela de histórico de commits de um notebook no repositório 
+**Figura 26:** Exemplo de tela de histórico de commits de um notebook no repositório 
 
 Realizado esse processo para cada notebook alterado, deve ser criado um Pull Request para a branch, adicionando um título que identifique a alteração, e uma descrição de cada alteração/desenvolvimento feito e o objetivo de cada um. Caso seja correção de erro em produção, incluir evidências de que ele foi solucionado. Preenchidas as informações e criado o PR, este cairá para avaliação do time de Governança Técnica, que fará análise e aprovação das alterações. 
 
-Após a aprovação do PR, o pipeline de CI/CD fará a passagem das alterações para o ambiente produtivo, workspace dtb-ipp-prd. 
+Após a aprovação do PR, o pipeline de CI/CD fará a passagem das alterações para o ambiente produtivo, workspace **dtb-ipp-prd**. 
