@@ -1,7 +1,7 @@
 2. Estrutura time Engenharia de Dados e Analytics 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    Este manual tem como objetivo abordar conhecimentos básicos sobre o nosso ambiente de desenvolvimento, assim como tecnologias utilizadas e padrões para quem está iniciando conosco em nosso ambiente de engenharia de dados.
+    Nosso time de arquitetura é subdividido em equipes, cada uma focando em diferentes aspectos de nossa atuação. Abaixo a relação de equipes e seus integrantes, para fácil identificação: 
 
     .. image:: /images/tabela.png
 
