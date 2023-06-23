@@ -40,9 +40,10 @@ Para criação de objetos, como tabelas ou views, é necessário incluir na tare
 * Motivo/objetivo da criação 
 * Nome do banco onde será feita a criação 
 * Planilha de dicionarização, preenchida com informações sobre a estrutura da tabela. O modelo dessa planilha e detalhes sobre preenchimento podem ser encontrados no `Portal Gestão de Dados <https://grupoultracloud.sharepoint.com/sites/ipp-portalgestaodados/SitePages/Dicionariza%C3%A7%C3%A3o-de-Estruturas-de-Dados.aspx>`_. 
-* Observação: tabelas no Azure SQL devem ser normalizadas. O time de Arquitetura aprova a arquitetura geral do projeto, mas a modelagem das tabelas a serem criadas deve passar por avaliação e aprovação do time de Administração de Dados 
-  
+* Observação: tabelas no Azure SQL devem ser normalizadas. O time de Arquitetura aprova a arquitetura geral do projeto, mas a modelagem das tabelas a serem criadas deve passar por avaliação e aprovação do time de Administração de Dados
 
+O SLA de atendimento para concessão de acessos e criação de objetos é de 5 dias. 
+  
 3.3 Oracle
 ===========
 
