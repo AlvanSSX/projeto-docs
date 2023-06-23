@@ -43,7 +43,7 @@ Vale ressaltar que os engenheiros terão apenas acesso de leitura ao ambiente de
 
 O uso mais comum que fazemos do Logic App é para captura de arquivos enviados como anexos em e-mails, gravando esse arquivo no Data Lake. Além desse cenário, pode ser usado para trazer arquivos disponibilizados no SharePoint, ou mesmo fazer envio de email de notificação em caso de falha/sucesso em determinado processo. Casos que fujam dos mencionados devem ser levados à equipe de Governança Técnica para avaliação. 
 
-Uma ação que é possível de se realizar via Logic App, mas que **não utilizamos** na Ipiranga, é fazer chamada de pipelines do Data Factory. T**Toda orquestração de processos deve ser concentrada no ADF**. No caso de Logic Apps, caso um processo precise ser executado após a disponibilização de um arquivo no storage, deve-se criar uma event trigger para capturar esse evento e acionar o pipeline. 
+Uma ação que é possível de se realizar via Logic App, mas que **não utilizamos** na Ipiranga, é fazer chamada de pipelines do Data Factory. **Toda orquestração de processos deve ser concentrada no ADF**. No caso de Logic Apps, caso um processo precise ser executado após a disponibilização de um arquivo no storage, deve-se criar uma event trigger para capturar esse evento e acionar o pipeline. 
 
 Testes que envolvam envio ou recebimento de e-mails devem ser testados com o email Ipiranga do engenheiro e apontando para o storage de laboratório, **stippdatalakelab**. Quando for produtizado, essas conexões serão passadas para o email produtivo do Data Lake, svc.ipippdatalake-p@ultra.com.br, e storage produtivo, **stippdatalakedev**. 
 
@@ -152,15 +152,15 @@ Também é possível importar dados do próprio Data Lake, fazer algum tipo de c
 6.3.7 Exemplos de pipelines
 -----------------------------
 
-* Ingestão para carga full dos dados vindos do Oracle: **pip_dm_tipo_projeto_synapse**
-* Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_componente**, trazendo os dados por DT_INCL
-* Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_movimento_comp**, trazendo os dados por DT_INCL ou DT_ALTER
-* Pipeline responsável por copiar os dados do Data Lake X para o Data Lake Y: **pip_move_output_anp**
-* Pipeline responsável por copiar os dados do Data Lake X para Data Lake Y caso na base final não tenha o arquivo com a versão mais atual: **pip_move_demanda_vendas_sales_rslt**
-* Pipeline que executa um notebook Databricks: **pip_base_ofertas_notebook_dtb**
-* Pipeline que transforma os dados a partir de um output gerado por outro processo e insere esses dados transformados em uma base transacional: **pip_interface_sitelocation_salesforce** (avaliar com muito cuidado as demandas deste tipo e identificar a real necessidade)
-* Pipeline que transforma um arquivo xlsx para parquet: **pip_cst_xls_dm_derivados_biocombustiveis**
-* Pipeline que lê um arquivo xlsx e extrai as abas existentes na planilha, gravando cada uma como um arquivo parquet único: **pip_converte_xlsx_parquet_exp_dados_manuais**
+* Ingestão para carga full dos dados vindos do Oracle: **pip_dm_tipo_projeto_synapse;**
+* Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_componente**, trazendo os dados por DT_INCL;
+* Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_movimento_comp**, trazendo os dados por DT_INCL ou DT_ALTER;
+* Pipeline responsável por copiar os dados do Data Lake X para o Data Lake Y: **pip_move_output_anp;**
+* Pipeline responsável por copiar os dados do Data Lake X para Data Lake Y caso na base final não tenha o arquivo com a versão mais atual: **pip_move_demanda_vendas_sales_rslt;**
+* Pipeline que executa um notebook Databricks: **pip_base_ofertas_notebook_dtb;**
+* Pipeline que transforma os dados a partir de um output gerado por outro processo e insere esses dados transformados em uma base transacional: **pip_interface_sitelocation_salesforce** (avaliar com muito cuidado as demandas deste tipo e identificar a real necessidade);
+* Pipeline que transforma um arquivo xlsx para parquet: **pip_cst_xls_dm_derivados_biocombustiveis;**
+* Pipeline que lê um arquivo xlsx e extrai as abas existentes na planilha, gravando cada uma como um arquivo parquet único: **pip_converte_xlsx_parquet_exp_dados_manuais.**
 
 6.3.8 Fluxo de produtização
 ----------------------------
@@ -240,13 +240,13 @@ Pasta sharedCode
 
 3. Arquivos de parâmetros
    
-     3.1.	Cada function deve ter seu próprio arquivo de parâmetros, e o nome do json deve ser igual ao de sua function
+     3.1.	Cada function deve ter seu próprio arquivo de parâmetros, e o nome do json deve ser igual ao de sua function;
      
-     3.2.	Os arquivos devem ser armazenados no próprio repositório, na pasta **sharedCode**
+     3.2.	Os arquivos devem ser armazenados no próprio repositório, na pasta **sharedCode;**
      
-     3.3.	Os diretórios acessados pelo código, para leitura e escrita, devem estar especificados no json
+     3.3.	Os diretórios acessados pelo código, para leitura e escrita, devem estar especificados no json;
      
-     3.4.	O arquivo é recuperado usando o método **get_directories**
+     3.4.	O arquivo é recuperado usando o método **get_directories;**
      
      3.5.	Descrição das chaves do json: 
 
@@ -334,25 +334,25 @@ A organização das pastas dentro do workspace (e repositório) deverá ser feit
   ::
 
       [área] 
-           [projeto A] 
-                            config 
-	 	 	             acessoCamadas.py 
-	 	 	             criaListaCamadas.py
+             [projeto A] 
+                      config 
+	 	 	     acessoCamadas.py 
+	 	 	     criaListaCamadas.py
 
-	 	 	        [assunto 1] 
-	 	 	 	         [notebook 1] 
-	 	 	 	         [notebook 2] 
-	 	    [projeto B] 
- 	 	            config 
-                 	                acessoCamadas.py
-              	 	 	        criaListaCamadas.py  	 	
-                    [assunto 1] 
-	 	 	 	         [notebook 1] 
+	 	      [assunto 1] 
+	 	 	     [notebook 1] 
+	 	 	     [notebook 2] 
+	      [projeto B] 
+ 	 	      config 
+                 	     acessoCamadas.py
+              	 	     criaListaCamadas.py  	 	
+                      [assunto 1] 
+	 	 	     [notebook 1] 
 
-	 	 	        [assunto 2] 
-	 	 	 	         [notebook 1] 
+	 	      [assunto 2] 
+	 	 	     [notebook 1] 
 
-	 	 	        [...] 
+	 	      [...] 
 
 6.5.2 Pasta config
 -------------------
