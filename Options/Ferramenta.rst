@@ -373,9 +373,13 @@ São 3 chaves a serem preenchidas:
 
 **Figura 17:** Exemplo de preenchimento do notebook criaListaCamadas.py 
 
+    .. image:: /images/Imagem17.jpg
+
 Se um diretório for acessado para leitura e escrita, deve ser especificado em ambas as chaves. 
 
 A partir dessas chaves, 3 arquivos json serão criados no sistema de arquivos: **baseLeitura.json**, **baseEscrita.json** e **baseArquivos.json**. Eles serão usados no próximo notebook. 
+
+    .. image:: /images/Imagem18.jpg
 
 **Figura 18:** Exemplo de preenchimento do notebook criaListaCamadas.py 
 
@@ -386,6 +390,8 @@ Notebook acessoCamadas.py
 É um notebook padrão, que será disponibilizado na pasta do projeto na criação do ambiente. Define as variáveis e métodos a serem usados nos notebooks para acesso aos arquivos, para leitura e gravação. No notebook estão disponíveis instruções para uso, bem como alguns exemplos.  
 
 A partir dos arquivos base criados no notebook **criaListaCamadas.py**, serão criados os dataframes usados nos métodos de leitura e escrita. 
+
+    .. image:: /images/Imagem19.jpg
 
 **Figura 19:** Exemplo do notebook acessoCamadas.py 
 
