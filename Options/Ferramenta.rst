@@ -152,8 +152,6 @@ Também é possível importar dados do próprio Data Lake, fazer algum tipo de c
 6.3.7 Exemplos de pipelines
 -----------------------------
 
-Segue alguns exemplos de pipelines quem podem ser utilizados como base para a construção de novos pipelines. 
-
 * Ingestão para carga full dos dados vindos do Oracle: **pip_dm_tipo_projeto_synapse;**
 * Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_componente**, trazendo os dados por DT_INCL;
 * Ingestão para carga incremental dos dados vindos do Oracle: **pip_pr_situacao_movimento_comp**, trazendo os dados por DT_INCL ou DT_ALTER;
@@ -373,12 +371,9 @@ São 3 chaves a serem preenchidas:
 * **baseEscrita**, onde devem estar os diretórios acessados para escrita; 
 * **baseArquivos**, onde devem estar os nomes dos arquivos que serão acessados. 
 
- 
+**Figura 17:** Exemplo de preenchimento do notebook criaListaCamadas.py 
 
     .. image:: /images/Imagem17.jpg
-        
-
-**Figura 17:** Exemplo de preenchimento do notebook criaListaCamadas.py
 
 Se um diretório for acessado para leitura e escrita, deve ser especificado em ambas as chaves. 
 
