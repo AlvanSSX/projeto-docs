@@ -7,7 +7,7 @@ version: 2
 
 # Set the OS, Python version and other tools you might need
 build:
-  os: windows-8.1
+  os: ubuntu-22.04
   tools:
     python: "3.10.7"
     # You can also specify other tool versions:
