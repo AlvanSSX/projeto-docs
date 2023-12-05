@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'projeto ipiranga'
+project = 'docs'
 copyright = '2023, Alvan Xavier'
 author = 'Alvan Xavier'
 
