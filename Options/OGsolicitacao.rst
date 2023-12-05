@@ -49,7 +49,7 @@ O SLA de atendimento para concessão de acessos e criação de objetos é de 5 d
 
 O processo para solicitação de acesso de usuários pessoais (para analistas e desenvolvedores) à tabelas no ambiente Oracle é descrito no seguinte documento desenvolvido pelo time de Administração de Dados, `Processo de solicitação de acesso <https://grupoultracloud.sharepoint.com/:b:/r/sites/ipp-portalgestaodados/Documentos Compartilhados/Administra%C3%A7%C3%A3o de Dados/Processo de Solicita%C3%A7%C3%A3o de Acesso em Produ%C3%A7%C3%A3o/AD - Processo solicita%C3%A7%C3%A3o de acesso - BI.pdf?csf=1&web=1&e=wUlLrn>`_, disponível no Portal Gestão de Dados.
 
-Para desenvolvimento de processos de ingestão do Oracle para o Data Lake, é necessário solicitar acesso às tabelas em questão para o usuário DLETL, o usuário de banco do Data Lake. Antes de qualquer coisa, orientamos que seja verificado se já não existe algum processo para esse mesmo fim, o que dispensaria um novo desenvolvimento. Para abrir essa solicitação de acesso, deve-se criar uma tarefa via ALM ou Jira, incluindo as informações:
+Para desenvolvimento de processos de ingestão do Oracle para o Data Lake, é necessário solicitar acesso às tabelas em questão para o usuário **DLETL**, o usuário de banco do Data Lake. Antes de qualquer coisa, orientamos que seja verificado se já não existe algum processo para esse mesmo fim, o que dispensaria um novo desenvolvimento. Para abrir essa solicitação de acesso, deve-se criar uma tarefa via ALM ou Jira, incluindo as informações:
 
 * Usuário DLETL; 
 * Projeto que está fazendo a solicitação; 
